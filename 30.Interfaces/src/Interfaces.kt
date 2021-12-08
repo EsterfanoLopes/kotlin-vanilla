@@ -1,8 +1,8 @@
 fun main(args: Array<String>) {
-    val myOven: Oven? = null
-    myOven?.turnOn()
-    myOven?.cook(150)
-    myOven?.turnOff()
+    val myOven: Oven = getOven()
+    myOven.turnOn()
+    myOven.cook(150)
+    myOven.turnOff()
 }
 
 interface Oven {
@@ -13,4 +13,20 @@ interface Oven {
     fun cook(temp: Int) {
         println("Cooking at $temp degrees")
     }
+}
+
+class Bosch: Oven {
+    override val temperature = 80
+
+    override fun turnOn() {
+        println("turning on")
+    }
+
+    override fun turnOff() {
+        println("turning off")
+    }
+}
+
+fun getOven(): Oven {
+    return Bosch()
 }
